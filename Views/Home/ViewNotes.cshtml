@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Assignment1.Dtos.HomeDto>
+
+@{
+    ViewBag.Title = "ViewNotes";
+}
+
+<h2>ViewNotes</h2>
+
+<p>
+    @Html.ActionLink("Add a note", "AddNote")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Title")
+        </th>
+        <th>
+            @Html.DisplayName("Content")
+        </th>
+        <th>
+            @Html.DisplayName("Date create")
+        </th>
+        <th>
+            @Html.DisplayName("Date modified")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateMod)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "ModifyNote", new { id=item.Id }) |
+            @Html.ActionLink("Details", "DisplayNote", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
