@@ -1,11 +1,8 @@
-﻿using Assignment1.Models;
+﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 using System.Web.Mvc;
-using DataLibrary;
-using static DataLibrary.Logic.NoteProcessor;
+
 using Assignment1.Managers;
 using Assignment1.Dtos;
 
