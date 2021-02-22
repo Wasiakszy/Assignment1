@@ -12,5 +12,6 @@ namespace Assignment1.Data
         public DbSet<NoteModel> NoteModel { get; set; }
         public DbSet<NotePreviousVersion> NotePreviousVersion { get; set; }
 
+       
     }
 }

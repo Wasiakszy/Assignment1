@@ -1,27 +1,19 @@
 ﻿@model IEnumerable<Assignment1.Dtos.HomeDto>
 
-@{
-    ViewBag.Title = "ViewNotes";
-}
-
-<h2>ViewNotes</h2>
-
 <p>
     @Html.ActionLink("Add a note", "AddNote")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("Title")
+            @Html.ActionLink("Title", "ViewNotes", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+       
+        <th>
+            @Html.ActionLink("Date Created", "ViewNotes", new { sortOrder = ViewBag.DateSortParam })
         </th>
         <th>
-            @Html.DisplayName("Content")
-        </th>
-        <th>
-            @Html.DisplayName("Date create")
-        </th>
-        <th>
-            @Html.DisplayName("Date modified")
+            @Html.ActionLink("Date Modified", "ViewNotes", new { sortOrder = ViewBag.DateSortParam2 })
         </th>
         <th></th>
     </tr>
@@ -31,9 +23,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Title)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.DateCre)
         </td>

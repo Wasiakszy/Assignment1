@@ -15,11 +15,14 @@ namespace Assignment1.Controllers
     {
         public HomeManager Manager { get => new HomeManager(); }
         [HttpGet]
-        public ActionResult ViewNotes()
+       
+        public ActionResult ViewNotes(string sortOrder)
         {
-            ViewBag.Title = "List of notes";
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "title" : "";
+            ViewBag.DateSortParm = sortOrder == "DateC" ? "DateC_desc" : "DateC";
+         //  ViewBag.DateSortParm2 = sortOrder == "DateM" ? "DateM_desc" : "DateC";
 
-            return View(Manager.Get());
+            return View(Manager.GetByOrder(sortOrder));
         }
         public ActionResult AddNote()
         {

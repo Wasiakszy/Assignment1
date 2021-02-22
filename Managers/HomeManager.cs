@@ -25,6 +25,43 @@ namespace Assignment1.Managers
                 return result;
             }
         }
+        public List<HomeDto> GetByOrder(string sortOrder)
+        {
+            using (var context = new AssignmentContext())
+            {
+                var result = context.Set<NoteModel>().Where(a => a.IsDeleted == false).Select(a => new HomeDto
+                {
+                    Content = a.Content,
+                    DateCre = a.DateCre,
+                    DateMod = a.DateMod,
+                    Title = a.Title,
+                    Id = a.Id
+                });
+                switch (sortOrder)
+                {
+                    case "title":
+                        result = result.OrderBy(a => a.Title);
+                        break;
+
+                    case "DateC":
+                        result = result.OrderBy(a => a.DateCre);
+                        break;
+
+                    case "DateC_desc":
+                        result = result.OrderByDescending(a => a.DateCre);
+                        break;
+                    case "DateM":
+                        result = result.OrderBy(a => a.DateMod);
+                        break;
+
+                    case "DateM_desc":
+                        result = result.OrderByDescending(a => a.DateMod);
+                        break;
+                }
+
+                return result.ToList();
+            }
+        }
 
         public HomeDto GetDetails(int id)
         {
